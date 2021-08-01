@@ -1,11 +1,12 @@
 package main
 
 import (
-	"6502/CLI"
-	"6502/CONSOLE"
-	"6502/CORE"
+	"6502_console/CLI"
+	"6502_console/CONSOLE"
 	"flag"
 	"fmt"
+
+	CORE "github.com/cassianoperin/6502"
 )
 
 func main() {

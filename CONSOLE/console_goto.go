@@ -1,7 +1,7 @@
 package CONSOLE
 
 import (
-	"6502/CORE"
+	"github.com/cassianoperin/6502"
 	"fmt"
 )
 

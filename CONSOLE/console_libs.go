@@ -1,11 +1,11 @@
 package CONSOLE
 
 import (
-	"6502/CORE"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
+	"github.com/cassianoperin/6502"
 )
 
 // --------------------------------------- Debug ---------------------------------------- //

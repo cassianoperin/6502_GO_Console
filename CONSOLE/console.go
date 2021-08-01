@@ -1,11 +1,11 @@
 package CONSOLE
 
 import (
-	"6502/CORE"
 	"fmt"
 	"io"
 	"strings"
 
+	"github.com/cassianoperin/6502"
 	"github.com/cassianoperin/pseudo-terminal-go/terminal"
 )
 

@@ -1,9 +1,9 @@
 package CONSOLE
 
 import (
-	"6502/CORE"
 	"flag"
 	"fmt"
+	"github.com/cassianoperin/6502"
 )
 
 // Console reset command

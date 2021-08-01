@@ -1,11 +1,11 @@
 package CLI
 
 import (
-	"6502/CONSOLE"
-	"6502/CORE"
+	"6502_console/CONSOLE"
 	"flag"
 	"fmt"
 	"os"
+	"github.com/cassianoperin/6502"
 )
 
 func CheckArgs() {

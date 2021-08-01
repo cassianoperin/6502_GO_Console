@@ -1,9 +1,9 @@
 package CONSOLE
 
 import (
-	"6502/CORE"
 	"fmt"
 	"strconv"
+	"github.com/cassianoperin/6502"
 )
 
 // Console step command

@@ -1,9 +1,9 @@
 package CONSOLE
 
 import (
-	"6502/CORE"
 	"fmt"
 	"strings"
+	"github.com/cassianoperin/6502"
 )
 
 // Console registers command

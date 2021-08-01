@@ -1,8 +1,8 @@
 package CONSOLE
 
 import (
-	"6502/CORE"
 	"fmt"
+	"github.com/cassianoperin/6502"
 )
 
 // Console mem command
