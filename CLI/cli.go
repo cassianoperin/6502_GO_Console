@@ -1,11 +1,12 @@
 package CLI
 
 import (
-	"6502_console/CONSOLE"
 	"flag"
 	"fmt"
 	"os"
-	"github.com/cassianoperin/6502"
+
+	CPU_6502 "github.com/cassianoperin/6502"
+	"github.com/cassianoperin/6502_console/CONSOLE"
 )
 
 func CheckArgs() {
@@ -37,7 +38,7 @@ func CheckArgs() {
 
 	// Debug
 	if *cliDebug {
-		CORE.Debug = true
+		CPU_6502.Debug = true
 	}
 
 	// PC
@@ -50,7 +51,7 @@ func CheckArgs() {
 			fmt.Printf("Invalid CLI \"register_PC\" value. Exiting.\n\n")
 			os.Exit(0)
 		} else {
-			CORE.PC_as_argument = uint16(output)
+			CPU_6502.PC_as_argument = uint16(output)
 		}
 
 	}

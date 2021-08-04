@@ -1,8 +1,9 @@
 package CONSOLE
 
 import (
-	"github.com/cassianoperin/6502"
 	"fmt"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // Console goto command
@@ -28,7 +29,7 @@ func Console_Command_Goto(text_slice []string) {
 
 		if !error_flag {
 
-			for loop_count < CORE.Loop_detection {
+			for loop_count < loop_detection {
 
 				// -------------------------- Start Checks --------------------------- //
 
@@ -46,10 +47,10 @@ func Console_Command_Goto(text_slice []string) {
 				}
 
 				// -------------- Finish checks and return to execution -------------- //
-				current_PC = CORE.PC
+				current_PC = CPU_6502.PC
 
 				select {
-				case <-CORE.Second_timer: // Show the header and debug each second
+				case <-second_timer: // Show the header and debug each second
 
 					// Execute one instruction
 					Console_Step(opcode_map, text_slice[0])
@@ -70,17 +71,17 @@ func Console_Command_Goto(text_slice []string) {
 				}
 
 				// Increase the loop counter
-				if current_PC == CORE.PC {
+				if current_PC == CPU_6502.PC {
 					loop_count++
 				}
 
 				// Check for loops and print debug message prior to quit loop
-				if loop_count >= CORE.Loop_detection {
-					fmt.Printf("Loop detected on PC=%04X (%d repetitions)\n", CORE.PC, CORE.Loop_detection)
+				if loop_count >= loop_detection {
+					fmt.Printf("Loop detected on PC=%04X (%d repetitions)\n", CPU_6502.PC, loop_detection)
 				}
 
 				// Check if GOTO address was reached
-				if CORE.PC == uint16(mem_arg) {
+				if CPU_6502.PC == uint16(mem_arg) {
 					fmt.Printf("Reached PC=0x%02X\n\n", mem_arg)
 					break // Exit for loop
 				}

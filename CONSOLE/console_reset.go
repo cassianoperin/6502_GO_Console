@@ -3,7 +3,8 @@ package CONSOLE
 import (
 	"flag"
 	"fmt"
-	"github.com/cassianoperin/6502"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // Console reset command
@@ -17,11 +18,11 @@ func Console_Command_Reset(text_slice []string) {
 	} else {
 
 		// Reset CPU
-		CORE.Initialize()
-		CORE.Reset()
+		CPU_6502.Initialize()
+		CPU_6502.Reset()
 
 		// Load Program again into memory
-		CORE.ReadROM(flag.Arg(0))
+		CPU_6502.ReadROM(flag.Arg(0))
 
 		// Print the Header
 		Console_PrintHeader()

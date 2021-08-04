@@ -2,7 +2,8 @@ package CONSOLE
 
 import (
 	"fmt"
-	"github.com/cassianoperin/6502"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // Console mem command
@@ -11,7 +12,7 @@ func Console_Command_Mem(text_slice []string) {
 	if len(text_slice) == 1 { // Without arguments (show all memory)
 		fmt.Printf("\t00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\n")
 		fmt.Printf("\t-----------------------------------------------")
-		for i := 0; i < len(CORE.Memory); i++ {
+		for i := 0; i < len(CPU_6502.Memory); i++ {
 
 			// Break lines
 			if i%16 == 0 {
@@ -19,7 +20,7 @@ func Console_Command_Mem(text_slice []string) {
 			}
 
 			// Print memory
-			fmt.Printf("%02X ", CORE.Memory[i])
+			fmt.Printf("%02X ", CPU_6502.Memory[i])
 
 		}
 		fmt.Println()
@@ -32,10 +33,10 @@ func Console_Command_Mem(text_slice []string) {
 		if !error_flag {
 
 			// Print Memory Value
-			if mem_arg < 0 || mem_arg >= len(CORE.Memory) {
+			if mem_arg < 0 || mem_arg >= len(CPU_6502.Memory) {
 				fmt.Printf("Invalid Address. Should be in range 0x0000 and 0xFFFF (65536)\n\n")
 			} else {
-				fmt.Printf("%02X\n\n", CORE.Memory[mem_arg])
+				fmt.Printf("%02X\n\n", CPU_6502.Memory[mem_arg])
 			}
 
 		} else {
@@ -50,10 +51,10 @@ func Console_Command_Mem(text_slice []string) {
 
 		if !error_flag && !error_flag2 {
 			// Invald Address Range
-			if mem_arg < 0 || mem_arg >= len(CORE.Memory) {
+			if mem_arg < 0 || mem_arg >= len(CPU_6502.Memory) {
 				fmt.Printf("Invalid Address in first argument. Should be in range 0x0000 and 0xFFFF (65536)\n\n")
 				error_flag = true
-			} else if mem_arg2 < 0 || mem_arg2 >= len(CORE.Memory) {
+			} else if mem_arg2 < 0 || mem_arg2 >= len(CPU_6502.Memory) {
 				fmt.Printf("Invalid Address in second argument. Should be in range 0x0000 and 0xFFFF (65536)\n\n")
 				error_flag = true
 			} else if mem_arg > mem_arg2 {
@@ -61,7 +62,7 @@ func Console_Command_Mem(text_slice []string) {
 				error_flag = true
 			} else { // Print Memory Value
 				for i := mem_arg; i <= mem_arg2; i++ {
-					fmt.Printf("%02X ", CORE.Memory[i])
+					fmt.Printf("%02X ", CPU_6502.Memory[i])
 				}
 				fmt.Printf("\n\n")
 			}

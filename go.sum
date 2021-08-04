@@ -1,0 +1,6 @@
+github.com/cassianoperin/6502 v1.0.0 h1:bAA6JSKBuOc2uRclcAus8UhHUPhZLdnhSYxxslf2zZU=
+github.com/cassianoperin/6502 v1.0.0/go.mod h1:uEU5ddBRR1WComk1/leifrKACuPnaGHW3VmA7YU3nu4=
+github.com/cassianoperin/pseudo-terminal-go v0.0.0-20210701005417-73e7e7760a23 h1:CKT6FKVepizp8yKIzkA98o+Iy23xUMm9Xu4UvE0p0P8=
+github.com/cassianoperin/pseudo-terminal-go v0.0.0-20210701005417-73e7e7760a23/go.mod h1:l+cZSUMJisR7nWtwpCGbvSybEv/1ZznPUGaudDifn5E=
+github.com/cassianoperin/pseudo-terminal-go v1.0.0 h1:5vTJN0cWHnPGI/lzRtJExnwDXYMjo2MXe1405O2t39A=
+github.com/cassianoperin/pseudo-terminal-go v1.0.0/go.mod h1:l+cZSUMJisR7nWtwpCGbvSybEv/1ZznPUGaudDifn5E=

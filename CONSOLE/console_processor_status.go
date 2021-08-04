@@ -3,7 +3,8 @@ package CONSOLE
 import (
 	"fmt"
 	"strings"
-	"github.com/cassianoperin/6502"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // Console processor_status command
@@ -40,56 +41,56 @@ func Console_Command_ProcessorStatus(text_slice []string) {
 					// Value limits
 					if location == "N" {
 						if mem_arg <= 1 && mem_arg >= 0 {
-							CORE.P[7] = byte(mem_arg)
-							fmt.Printf("\tP[7] - Negative flag set to %d\n\n", CORE.P[7])
+							CPU_6502.P[7] = byte(mem_arg)
+							fmt.Printf("\tP[7] - Negative flag set to %d\n\n", CPU_6502.P[7])
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid value. Should be 0 or 1.\n\n")
 						}
 					} else if location == "V" {
 						if mem_arg <= 1 && mem_arg >= 0 {
-							CORE.P[6] = byte(mem_arg)
-							fmt.Printf("\tP[6] - Overflow flag set to %d\n\n", CORE.P[6])
+							CPU_6502.P[6] = byte(mem_arg)
+							fmt.Printf("\tP[6] - Overflow flag set to %d\n\n", CPU_6502.P[6])
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid value. Should be 0 or 1.\n\n")
 						}
 					} else if location == "B" {
 						if mem_arg <= 1 && mem_arg >= 0 {
-							CORE.P[4] = byte(mem_arg)
-							fmt.Printf("\tP[4] - Break flag set to %d\n\n", CORE.P[4])
+							CPU_6502.P[4] = byte(mem_arg)
+							fmt.Printf("\tP[4] - Break flag set to %d\n\n", CPU_6502.P[4])
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid value. Should be 0 or 1.\n\n")
 						}
 					} else if location == "D" {
 						if mem_arg <= 1 && mem_arg >= 0 {
-							CORE.P[3] = byte(mem_arg)
-							fmt.Printf("\tP[3] - Decimal flag set to %d\n\n", CORE.P[3])
+							CPU_6502.P[3] = byte(mem_arg)
+							fmt.Printf("\tP[3] - Decimal flag set to %d\n\n", CPU_6502.P[3])
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid value. Should be 0 or 1.\n\n")
 						}
 					} else if location == "I" {
 						if mem_arg <= 1 && mem_arg >= 0 {
-							CORE.P[2] = byte(mem_arg)
-							fmt.Printf("\tP[2] - IRQ Disable flag set to %d\n\n", CORE.P[2])
+							CPU_6502.P[2] = byte(mem_arg)
+							fmt.Printf("\tP[2] - IRQ Disable flag set to %d\n\n", CPU_6502.P[2])
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid value. Should be 0 or 1.\n\n")
 						}
 					} else if location == "Z" {
 						if mem_arg <= 1 && mem_arg >= 0 {
-							CORE.P[1] = byte(mem_arg)
-							fmt.Printf("\tP[1] - Zero flag set to %d\n\n", CORE.P[1])
+							CPU_6502.P[1] = byte(mem_arg)
+							fmt.Printf("\tP[1] - Zero flag set to %d\n\n", CPU_6502.P[1])
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid value. Should be 0 or 1.\n\n")
 						}
 					} else if location == "C" {
 						if mem_arg <= 1 && mem_arg >= 0 {
-							CORE.P[0] = byte(mem_arg)
-							fmt.Printf("\tP[0] - Carry flag set to %d\n\n", CORE.P[0])
+							CPU_6502.P[0] = byte(mem_arg)
+							fmt.Printf("\tP[0] - Carry flag set to %d\n\n", CPU_6502.P[0])
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid value. Should be 0 or 1.\n\n")

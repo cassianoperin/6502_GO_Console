@@ -5,7 +5,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"github.com/cassianoperin/6502"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // --------------------------------------- Debug ---------------------------------------- //
@@ -18,11 +19,11 @@ func print_debug_console(opcode_map []instructuction, mem_arg int) {
 
 	for i := 0; i < len(opcode_map); i++ {
 
-		if CORE.Memory[mem_arg] == opcode_map[i].code {
+		if CPU_6502.Memory[mem_arg] == opcode_map[i].code {
 
 			opcode_found = true
 
-			opc_string, opc_operand, operand_bigendian_string := CORE.Debug_decode_console(opcode_map[i].bytes, uint16(mem_arg))
+			opc_string, opc_operand, operand_bigendian_string := CPU_6502.Debug_decode_console(opcode_map[i].bytes, uint16(mem_arg))
 
 			// Map Opcode
 			switch opcode_map[i].memory_mode {
@@ -103,7 +104,7 @@ func Console_PrintHeader() {
 	fmt.Printf("\n\n\n")
 	fmt.Printf("  -------------------------------------------------------------------------\n")
 	fmt.Printf("  |   PC\tA\tX\tY\tSP\tNV-BDIZC\tCycle\n")
-	fmt.Printf("  |   %04X\t%02X\t%02X\t%02X\t%02X\t%d%d%d%d%d%d%d%d\t%d\n", CORE.PC, CORE.A, CORE.X, CORE.Y, CORE.SP, CORE.P[7], CORE.P[6], CORE.P[5], CORE.P[4], CORE.P[3], CORE.P[2], CORE.P[1], CORE.P[0], CORE.Cycle)
+	fmt.Printf("  |   %04X\t%02X\t%02X\t%02X\t%02X\t%d%d%d%d%d%d%d%d\t%d\n", CPU_6502.PC, CPU_6502.A, CPU_6502.X, CPU_6502.Y, CPU_6502.SP, CPU_6502.P[7], CPU_6502.P[6], CPU_6502.P[5], CPU_6502.P[4], CPU_6502.P[3], CPU_6502.P[2], CPU_6502.P[1], CPU_6502.P[0], CPU_6502.Cycle)
 	fmt.Printf("  -------------------------------------------------------------------------\n\n")
 }
 
@@ -113,31 +114,31 @@ func Console_PrintHeader() {
 func Console_Step(opcode_map []instructuction, origin_command string) {
 
 	// Keep current debug value
-	current_debug := CORE.Debug
+	current_debug := CPU_6502.Debug
 
 	// Debug is only used in STEP command
 	if origin_command == "run" || origin_command == "goto" {
-		CORE.Debug = false // Force disable debug
+		CPU_6502.Debug = false // Force disable debug
 	}
 
 	// Print the opcode debug
 	fmt.Println()
-	print_debug_console(opcode_map, int(CORE.PC))
+	print_debug_console(opcode_map, int(CPU_6502.PC))
 	fmt.Println()
 
-	for !CORE.NewInstruction {
-		CORE.CPU_Interpreter()
+	for !CPU_6502.NewInstruction {
+		CPU_6502.CPU_Interpreter()
 	}
 
 	// Reset new instruction flag
-	CORE.NewInstruction = false
+	CPU_6502.NewInstruction = false
 
 	// Print the Header
 	Console_PrintHeader()
 
 	// Debug is only used in STEP command
 	if origin_command == "run" || origin_command == "goto" {
-		CORE.Debug = current_debug // // Return original Debug value
+		CPU_6502.Debug = current_debug // // Return original Debug value
 	}
 }
 
@@ -145,23 +146,23 @@ func Console_Step(opcode_map []instructuction, origin_command string) {
 func Console_Step_without_debug(opcode_map []instructuction, origin_command string) {
 
 	// Keep current debug value
-	current_debug := CORE.Debug
+	current_debug := CPU_6502.Debug
 
 	// Debug is only used in STEP command
 	if origin_command == "run" || origin_command == "goto" {
-		CORE.Debug = false // Force disable debug
+		CPU_6502.Debug = false // Force disable debug
 	}
 
-	for !CORE.NewInstruction {
-		CORE.CPU_Interpreter()
+	for !CPU_6502.NewInstruction {
+		CPU_6502.CPU_Interpreter()
 	}
 
 	// Reset new instruction flag
-	CORE.NewInstruction = false
+	CPU_6502.NewInstruction = false
 
 	// Debug is only used in STEP command
 	if origin_command == "run" || origin_command == "goto" {
-		CORE.Debug = current_debug // // Return original Debug value
+		CPU_6502.Debug = current_debug // // Return original Debug value
 	}
 
 }
@@ -178,35 +179,35 @@ func Console_Check_breakpoints(break_flag bool) bool {
 
 			// ------ PC ------ //
 			if breakpoints[i].location == "PC" {
-				if CORE.PC == uint16(breakpoints[i].value) {
+				if CPU_6502.PC == uint16(breakpoints[i].value) {
 					fmt.Printf("Breakpoint %d reached: %s=0x%04X\t(Decimal: %d)\n", i, breakpoints[i].location, breakpoints[i].value, breakpoints[i].value)
 					break_flag = true
 				}
 
 				// ------ A ------- //
 			} else if breakpoints[i].location == "A" {
-				if CORE.A == byte(breakpoints[i].value) {
+				if CPU_6502.A == byte(breakpoints[i].value) {
 					fmt.Printf("Breakpoint %d reached: %s=0x%02X\t(Decimal: %d)\n", i, breakpoints[i].location, breakpoints[i].value, breakpoints[i].value)
 					break_flag = true
 				}
 
 				// ------ X ------- //
 			} else if breakpoints[i].location == "X" {
-				if CORE.X == byte(breakpoints[i].value) {
+				if CPU_6502.X == byte(breakpoints[i].value) {
 					fmt.Printf("Breakpoint %d reached: %s=0x%02X\t(Decimal: %d)\n", i, breakpoints[i].location, breakpoints[i].value, breakpoints[i].value)
 					break_flag = true
 				}
 
 				// ------ Y ------- //
 			} else if breakpoints[i].location == "Y" {
-				if CORE.Y == byte(breakpoints[i].value) {
+				if CPU_6502.Y == byte(breakpoints[i].value) {
 					fmt.Printf("Breakpoint %d reached: %s=0x%02X\t(Decimal: %d)\n", i, breakpoints[i].location, breakpoints[i].value, breakpoints[i].value)
 					break_flag = true
 				}
 
 				// ------ Cycle ------- //
 			} else if breakpoints[i].location == "CYCLE" {
-				if CORE.Cycle >= uint64(breakpoints[i].value) {
+				if CPU_6502.Cycle >= uint64(breakpoints[i].value) {
 					fmt.Printf("Breakpoint %d reached: %s=%d\t(0x%02X)\n", i, breakpoints[i].location, breakpoints[i].value, breakpoints[i].value)
 					break_flag = true
 				}

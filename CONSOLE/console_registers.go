@@ -3,7 +3,8 @@ package CONSOLE
 import (
 	"fmt"
 	"strings"
-	"github.com/cassianoperin/6502"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // Console registers command
@@ -40,8 +41,8 @@ func Console_Command_Registers(text_slice []string) {
 					// Value limits
 					if location == "PC" {
 						if mem_arg <= 65535 && mem_arg >= 0 {
-							CORE.PC = uint16(mem_arg)
-							fmt.Printf("\tPC set to 0x%02X (%d)\n\n", CORE.PC, CORE.PC)
+							CPU_6502.PC = uint16(mem_arg)
+							fmt.Printf("\tPC set to 0x%02X (%d)\n\n", CPU_6502.PC, CPU_6502.PC)
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid Address. Should be in range 0x0000 and 0xFFFF (65536)\n\n")
@@ -50,8 +51,8 @@ func Console_Command_Registers(text_slice []string) {
 
 					if location == "A" {
 						if mem_arg <= 255 && mem_arg >= 0 {
-							CORE.A = byte(mem_arg)
-							fmt.Printf("\tA set to 0x%02X (%d)\n\n", CORE.A, CORE.A)
+							CPU_6502.A = byte(mem_arg)
+							fmt.Printf("\tA set to 0x%02X (%d)\n\n", CPU_6502.A, CPU_6502.A)
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid Address. Should be in range 0x0000 and 0xFF (255)\n\n")
@@ -60,8 +61,8 @@ func Console_Command_Registers(text_slice []string) {
 
 					if location == "X" {
 						if mem_arg <= 255 && mem_arg >= 0 {
-							CORE.X = byte(mem_arg)
-							fmt.Printf("\tX set to 0x%02X (%d)\n\n", CORE.X, CORE.X)
+							CPU_6502.X = byte(mem_arg)
+							fmt.Printf("\tX set to 0x%02X (%d)\n\n", CPU_6502.X, CPU_6502.X)
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid Address. Should be in range 0x0000 and 0xFF (255)\n\n")
@@ -70,8 +71,8 @@ func Console_Command_Registers(text_slice []string) {
 
 					if location == "Y" {
 						if mem_arg <= 255 && mem_arg >= 0 {
-							CORE.Y = byte(mem_arg)
-							fmt.Printf("\tY set to %02X (%d)\n\n", CORE.Y, CORE.Y)
+							CPU_6502.Y = byte(mem_arg)
+							fmt.Printf("\tY set to %02X (%d)\n\n", CPU_6502.Y, CPU_6502.Y)
 							Console_PrintHeader()
 						} else {
 							fmt.Printf("Invalid Address. Should be in range 0x0000 and 0xFF (255)\n\n")

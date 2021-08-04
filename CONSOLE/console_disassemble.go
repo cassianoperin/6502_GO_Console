@@ -1,8 +1,9 @@
 package CONSOLE
 
 import (
-	"github.com/cassianoperin/6502"
 	"fmt"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // Console disassemble command
@@ -18,7 +19,7 @@ func Console_Command_Disassemble(text_slice []string) {
 		if !error_flag {
 
 			// Print Memory Value
-			if mem_arg < 0 || mem_arg >= len(CORE.Memory) {
+			if mem_arg < 0 || mem_arg >= len(CPU_6502.Memory) {
 				fmt.Printf("Invalid Address. Should be in range 0x0000 and 0xFFFF (65536)\n\n")
 			} else {
 				// Disassemble Memory address
@@ -40,10 +41,10 @@ func Console_Command_Disassemble(text_slice []string) {
 
 		if !error_flag && !error_flag2 {
 			// Invald Address Range
-			if mem_arg < 0 || mem_arg >= len(CORE.Memory) {
+			if mem_arg < 0 || mem_arg >= len(CPU_6502.Memory) {
 				fmt.Printf("Invalid Address in first argument. Should be in range 0x0000 and 0xFFFF (65536)\n\n")
 				error_flag = true
-			} else if mem_arg2 < 0 || mem_arg2 >= len(CORE.Memory) {
+			} else if mem_arg2 < 0 || mem_arg2 >= len(CPU_6502.Memory) {
 				fmt.Printf("Invalid Address in second argument. Should be in range 0x0000 and 0xFFFF (65536)\n\n")
 				error_flag = true
 			} else if mem_arg > mem_arg2 {
@@ -57,7 +58,7 @@ func Console_Command_Disassemble(text_slice []string) {
 					// Get the number of bytes of the opcode to skip the operands
 					for j := 0; j < len(opcode_map); j++ {
 
-						if CORE.Memory[i] == opcode_map[j].code {
+						if CPU_6502.Memory[i] == opcode_map[j].code {
 							opc_bytes = opcode_map[j].bytes
 						}
 					}

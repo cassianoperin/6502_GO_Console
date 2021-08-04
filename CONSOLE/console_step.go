@@ -3,7 +3,8 @@ package CONSOLE
 import (
 	"fmt"
 	"strconv"
-	"github.com/cassianoperin/6502"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // Console step command
@@ -30,7 +31,7 @@ func Console_Command_Step(text_slice []string) {
 				for i := 0; i < value; i++ {
 
 					// Execute one instruction
-					if CORE.Cycle < step_debug_start {
+					if CPU_6502.Cycle < step_debug_start {
 						Console_Step_without_debug(opcode_map, text_slice[0])
 					} else {
 						Console_Step(opcode_map, text_slice[0])

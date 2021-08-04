@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"io"
 	"strings"
+	"time"
 
-	"github.com/cassianoperin/6502"
+	CPU_6502 "github.com/cassianoperin/6502"
 	"github.com/cassianoperin/pseudo-terminal-go/terminal"
 )
 
@@ -23,12 +24,23 @@ type breakpoint struct {
 }
 
 var (
+	// Limits
 	step_limit       int    = 1000
 	step_debug_start uint64 = 0
 	run_limit        int    = 1000
 	goto_limit       int    = 1000
-	breakpoints      []breakpoint
-	opcode_map       = []instructuction{
+
+	// Breakpoints
+	breakpoints []breakpoint
+
+	// Timers
+	second_timer = time.Tick(time.Second)
+
+	// Loop Detection
+	loop_detection uint16 = 1000
+
+	// Opcode Map
+	opcode_map = []instructuction{
 		{0x0A, 1, 2, "ASL", "accumulator"},
 		{0x18, 1, 2, "CLC", "implied"},
 		{0xD8, 1, 2, "CLD", "implied"},
@@ -186,7 +198,7 @@ var (
 func StartConsole() {
 
 	// Reset system
-	CORE.Reset()
+	CPU_6502.Reset()
 
 	term, err := terminal.NewWithStdInOut()
 	if err != nil {

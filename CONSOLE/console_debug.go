@@ -1,8 +1,9 @@
 package CONSOLE
 
 import (
-	"github.com/cassianoperin/6502"
 	"fmt"
+
+	CPU_6502 "github.com/cassianoperin/6502"
 )
 
 // Console debug command
@@ -11,7 +12,7 @@ func Console_Command_Debug(text_slice []string) {
 	if len(text_slice) == 1 {
 
 		// Show current value
-		if CORE.Debug {
+		if CPU_6502.Debug {
 			fmt.Printf("Debug status: Enabled\n\n")
 		} else {
 			fmt.Printf("Debug status: Disabled\n\n")
@@ -26,10 +27,10 @@ func Console_Command_Debug(text_slice []string) {
 
 		if text_slice[1] == "on" || text_slice[1] == "off" {
 			if text_slice[1] == "on" {
-				CORE.Debug = true
+				CPU_6502.Debug = true
 				fmt.Printf("Debug mode enabled\n\n")
 			} else {
-				CORE.Debug = false
+				CPU_6502.Debug = false
 				fmt.Printf("Debug mode disabled\n\n")
 			}
 		} else {
