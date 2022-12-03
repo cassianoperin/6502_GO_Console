@@ -19,15 +19,15 @@ All opcodes and memory modes implemented and tested in Klaus Dormann test suite.
 
 **Disassembler** | **Memory Dump**
 :-------------------------:|:-------------------------:
-<img width="430" alt="horizontal" src="https://github.com/cassianoperin/6502/blob/main/Images/disassembler.png">  |  <img width="430" alt="vertical" src="https://github.com/cassianoperin/6502/blob/main/Images/memdump.png">
+<img width="430" alt="horizontal" src="https://github.com/cassianoperin/6502_GO_Console/blob/main/Images/disassembler.png">  |  <img width="430" alt="vertical" src="https://github.com/cassianoperin/6502_GO_Console/blob/main/Images/memdump.png">
 
 **Opcode Execution** | **Debug Mode**
 :-------------------------:|:-------------------------:
-<img width="430" alt="input" src="https://github.com/cassianoperin/6502/blob/main/Images/opcode_execution.png"> | <img width="430" alt="palette" src="https://github.com/cassianoperin/6502/blob/main/Images/debug.png">
+<img width="430" alt="input" src="https://github.com/cassianoperin/6502_GO_Console/blob/main/Images/opcode_execution.png"> | <img width="430" alt="palette" src="https://github.com/cassianoperin/6502_GO_Console/blob/main/Images/debug.png">
 
 **Breakpoints** | **Registers and CPU Status changes**
 :-------------------------:|:-------------------------:
-<img width="430" alt="players" src="https://github.com/cassianoperin/6502/blob/main/Images/breakpoints.png"> | <img width="430" alt="scoreboard" src="https://github.com/cassianoperin/6502/blob/main/Images/registers_status.png">
+<img width="430" alt="players" src="https://github.com/cassianoperin/6502_GO_Console/blob/main/Images/breakpoints.png"> | <img width="430" alt="scoreboard" src="https://github.com/cassianoperin/6502_GO_Console/blob/main/Images/registers_status.png">
 
 ## Improvements (Later)
 * ![100%](https://progress-bar.dev/0) CONSOLE: Interrupt loops with CTRL-C (replace hard limits)
