@@ -1,6 +1,6 @@
 # 6502 Emulator
 
-MOS Technology 6502 8-bit microprocessor emulator written in Go.
+Console to interact with MOS Technology 6502 8-bit microprocessor emulator written in Go.
 
 All opcodes and memory modes implemented and tested in Klaus Dormann test suite.
 
@@ -29,17 +29,10 @@ All opcodes and memory modes implemented and tested in Klaus Dormann test suite.
 :-------------------------:|:-------------------------:
 <img width="430" alt="players" src="https://github.com/cassianoperin/6502/blob/main/Images/breakpoints.png"> | <img width="430" alt="scoreboard" src="https://github.com/cassianoperin/6502/blob/main/Images/registers_status.png">
 
-
-## Improvements
-* ![100%](https://progress-bar.dev/0) Update the core to a GO Module
-
 ## Improvements (Later)
-* ![100%](https://progress-bar.dev/0) IRQs
-* ![100%](https://progress-bar.dev/0) Put opcodes debug message on start OR end of opcodes
 * ![100%](https://progress-bar.dev/0) CONSOLE: Interrupt loops with CTRL-C (replace hard limits)
 * ![100%](https://progress-bar.dev/0) CONSOLE: Mem Dump suppress repeated lines
 * ![100%](https://progress-bar.dev/0) CONSOLE: Multiple commands with ";"
-* ![100%](https://progress-bar.dev/0) Opcode cycle precision mode (what is done in each cycle)
 
 ## EMULATOR Build Instructions
 
