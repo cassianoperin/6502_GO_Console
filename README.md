@@ -37,18 +37,8 @@ All opcodes and memory modes implemented and tested in Klaus Dormann test suite.
 ## EMULATOR Build Instructions
 
 1) MAC
-* Install GO:
 
-	 `brew install go`
-
-* Install library requisites:
-
-	`go get github.com/cassianoperin/pseudo-terminal-go/terminal`
-
-
-* Compile:
-
-	`go build -ldflags="-s -w" 6502.go`
+	`env GOOS="darwin" GOARCH="amd64" go build -ldflags="-s -w"`
 
 2) Windows and Linux
 
