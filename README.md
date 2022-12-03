@@ -1,6 +1,6 @@
 # 6502 Emulator
 
-Console to interact with MOS Technology 6502 8-bit microprocessor emulator written in Go.
+Console to interact with MOS Technology 6502 8-bit microprocessor emulator written in Go for MacOS.
 
 All opcodes and memory modes implemented and tested in Klaus Dormann test suite.
 
@@ -36,14 +36,9 @@ All opcodes and memory modes implemented and tested in Klaus Dormann test suite.
 
 ## EMULATOR Build Instructions
 
-1) MAC
+### MAC
 
-	`env GOOS="darwin" GOARCH="amd64" go build -ldflags="-s -w"`
-
-2) Windows and Linux
-
-* Not tested yet.
-
+`env GOOS="darwin" GOARCH="amd64" go build -ldflags="-s -w"`
 
 ## Usage
 
