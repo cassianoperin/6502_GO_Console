@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	CPU_6502 "github.com/cassianoperin/6502"
-	"github.com/cassianoperin/6502_console/CONSOLE"
+	"6502_GO_Console/CONSOLE"
+
+	CPU_6502 "github.com/cassianoperin/6502_GO_Core"
 )
 
 func CheckArgs() {

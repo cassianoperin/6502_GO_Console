@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/cassianoperin/6502_console/CLI"
-	"github.com/cassianoperin/6502_console/CONSOLE"
+	"6502_GO_Console/CLI"
+	"6502_GO_Console/CONSOLE"
 
-	CPU_6502 "github.com/cassianoperin/6502"
+	CPU_6502 "github.com/cassianoperin/6502_GO_Core"
 )
 
 func main() {

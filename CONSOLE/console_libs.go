@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	CPU_6502 "github.com/cassianoperin/6502"
+	CPU_6502 "github.com/cassianoperin/6502_GO_Core"
 )
 
 // --------------------------------------- Debug ---------------------------------------- //

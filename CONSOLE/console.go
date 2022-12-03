@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	CPU_6502 "github.com/cassianoperin/6502"
+	CPU_6502 "github.com/cassianoperin/6502_GO_Core"
 	"github.com/cassianoperin/pseudo-terminal-go/terminal"
 )
 
